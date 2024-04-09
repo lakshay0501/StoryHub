@@ -4,7 +4,7 @@ import { withAccelerate } from '@prisma/extension-accelerate'
 import { decode, sign, verify } from 'hono/jwt'
 import { UserRouter as userRoutes } from './routes/user'
 import {BlogRouter as blogRoutes} from './routes/blog'
-
+import { cors } from 'hono/cors'
 type EnvironmentVariables = {
   Bindings: {
     DATABASE_URL: string;
@@ -13,7 +13,7 @@ type EnvironmentVariables = {
 };
 
 const app = new Hono<EnvironmentVariables>();
-
+app.use("/*",cors())
 app.route('/api/v1/user',userRoutes)
 app.route('/api/v1/blog',blogRoutes)
 
