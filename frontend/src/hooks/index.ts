@@ -2,15 +2,41 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { BACKEND_URL } from "../config"
 
-interface Blog{
+export interface Blog{
     
-        "content": string,
-        "title": string,
-        "id": string,
-        "author": {
-            "name": string
+    "content": string,
+    "title": string,
+    "id": string,
+    "author": {
+        "name": string
+    }
+
+}
+
+export const useBlog = ({id} :{id:string}) => {
+    const [blog,setBlog] = useState<Blog>()
+    const [loading,setLoading] = useState(true)
+
+    useEffect(()=>{
+        async function getBlogs(){
+            const res = await axios.get(`${BACKEND_URL}/api/v1/blog/${id}`,{
+                headers:{
+                     Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            console.log(res)
+            setBlog(res.data.blog)
+            setLoading(false)
         }
-    
+        if(id){
+          getBlogs()
+        }
+    },[id])
+
+    return {
+        loading,
+        blog
+    }
 }
 
 export const useBlogs = () => {
