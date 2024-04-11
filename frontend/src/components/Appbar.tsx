@@ -1,5 +1,6 @@
 import { Avatar } from "./BlogCard"
 import { Link } from "react-router-dom"
+import { DropdownComponent } from "./DropdownComponent"
 
 export const Appbar = () => {
     return <div className="border-b flex justify-between px-10 py-4 items-center">
@@ -14,7 +15,9 @@ export const Appbar = () => {
                 New Blog
             </button>
         </Link>
-         <Avatar name="Lakshay" size={"big"}></Avatar>
+        <div>
+            <DropdownComponent/>
+         </div>
        </div>
     </div>
 }

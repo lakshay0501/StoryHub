@@ -6,6 +6,7 @@ import { Signup } from './pages/Signup'
 import { Blogs } from './pages/Blogs'
 import './App.css'
 import { Publish } from './pages/Publish'
+import { Signout } from './pages/Signout'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,6 +20,7 @@ function App() {
             <Route path='/blog/:id' element={<Blog/>}></Route>
             <Route path='/blogs' element={<Blogs/>}></Route>
             <Route path='/publish' element={<Publish/>}></Route>
+            <Route path='/signout' element={<Signout/>}></Route>
          </Routes>
        </BrowserRouter>
     </>
