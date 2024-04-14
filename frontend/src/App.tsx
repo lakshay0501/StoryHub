@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
 import { Blog } from './pages/Blog'
 import { Signin } from './pages/Signin'
@@ -9,7 +9,6 @@ import { Publish } from './pages/Publish'
 import { Signout } from './pages/Signout'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
